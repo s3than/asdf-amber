@@ -66,7 +66,7 @@ download_release() {
 	# TODO: Adapt the release URL convention for amber
 	# https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_x86_64
 	# https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_macos_aarch64
-	url="$GH_REPO/releases/download/${version}/amber_${platform}_${cpu}.tgz"
+	url="$GH_REPO/releases/download/${version}/amber_${platform}_${cpu}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" "$url" || fail "Could not download $url"
