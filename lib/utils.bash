@@ -50,7 +50,7 @@ get_cpu() {
 
 	case "$machine_hardware_name" in
 	'x86_64') local cpu_type="x86_64" ;;
-	'aarch64') local cpu_type="aarch64" ;;
+	'arm64') local cpu_type="aarch64" ;;
 	*) local cpu_type="$machine_hardware_name" ;;
 	esac
 
