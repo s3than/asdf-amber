@@ -45,7 +45,16 @@ get_arch() {
 }
 
 get_cpu() {
-	uname -m
+	local machine_hardware_name
+	machine_hardware_name=$(uname -m)
+
+	case "$machine_hardware_name" in
+	'x86_64') local cpu_type="x86_64" ;;
+	'aarch64') local cpu_type="aarch64" ;;
+	*) local cpu_type="$machine_hardware_name" ;;
+	esac
+
+	echo "$cpu_type"
 }
 
 download_release() {
