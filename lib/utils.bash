@@ -36,7 +36,12 @@ list_all_versions() {
 }
 
 get_arch() {
-	uname | tr '[:upper:]' '[:lower:]'
+	arch=$(uname | tr '[:upper:]' '[:lower:]')
+	if [ "$arch" = "darwin" ]; then
+		echo "macos"
+	else
+		echo "$arch"
+	fi
 }
 
 get_cpu() {
