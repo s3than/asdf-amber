@@ -63,9 +63,12 @@ download_release() {
 	version="$1"
 	filename="$2"
 
+	# As the project is in alpha when asking for latest we get the newest tag, as Github doesn't have releases as yet.
+	if [ "$version" == "latest" ]; then
+		version=$(list_all_versions | sort_versions | tail -n 1)
+	fi
+
 	# TODO: Adapt the release URL convention for amber
-	# https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_x86_64
-	# https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_macos_aarch64
 	url="$GH_REPO/releases/download/${version}/amber_${platform}_${cpu}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
