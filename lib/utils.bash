@@ -45,18 +45,7 @@ get_arch() {
 }
 
 get_cpu() {
-	local machine_hardware_name
-	machine_hardware_name=${ASDF_KUBECTL_OVERWRITE_ARCH:-"$(uname -m)"}
-
-	case "$machine_hardware_name" in
-	'x86_64') local cpu_type="x86_64" ;;
-	'powerpc64le' | 'ppc64le') local cpu_type="ppc64le" ;;
-	'aarch64') local cpu_type="arm64" ;;
-	'armv7l') local cpu_type="arm" ;;
-	*) local cpu_type="$machine_hardware_name" ;;
-	esac
-
-	echo "$cpu_type"
+	uname -m
 }
 
 download_release() {
